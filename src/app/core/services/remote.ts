@@ -6,7 +6,6 @@ import { Injectable } from "@angular/core";
 export class Kinvey {
     private BASE_URL = 'https://baas.kinvey.com/';
     private APP_KEY = 'kid_SkkFOgvUX';
-    private APP_SECRET = '547f24fa79284e158a15ac8769796874';
 
     constructor(private http: HttpClient) { }
 
@@ -28,6 +27,9 @@ export class Kinvey {
     }
 
     private getUrl(module, endpoint): string {
+        if (endpoint === '') {
+            return this.BASE_URL + module + '/' + this.APP_KEY
+        }
         return this.BASE_URL + module + '/' + this.APP_KEY + '/' + endpoint
     }
 

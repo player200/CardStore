@@ -1,0 +1,30 @@
+<div class="container">
+  {{model | json}}
+  <h1>Create card</h1>
+  <form #createCardForm="ngForm" (ngSubmit)="create()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required name="name" [(ngModel)]="model.name" #name="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="categoryId">Category</label>
+      <select class="form-control" id="categoryId" name="categoryId" [(ngModel)]="model.categoryId">
+        <option *ngFor="let category of categories" value="{{category._id}}">{{category.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" class="form-control" id="price" required name="price" [(ngModel)]="model.price" #price="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" id="description" required name="description" [(ngModel)]="model.description" #description="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">Image Url</label>
+      <input type="text" class="form-control" id="imageUrl" required name="imageUrl" [(ngModel)]="model.imageUrl" #imageUrl="ngModel">
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="createCardForm.form.invalid">Create</button>
+  </form>
+</div>

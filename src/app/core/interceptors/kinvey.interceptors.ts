@@ -12,7 +12,6 @@ import { tap } from 'rxjs/operators'
 //import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
-
 const appKey = "kid_SkkFOgvUX" // APP KEY HERE;
 const appSecret = "547f24fa79284e158a15ac8769796874" // APP SECRET HERE;
 
@@ -47,6 +46,14 @@ export class KinveyInterceptor implements HttpInterceptor {
                 }
             })
             this.router.navigate(['/home'])
+        } else if (request.url.includes('appdata')){
+            request = request.clone({
+                setHeaders: {
+                    'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            //this.router.navigate(['/home'])
         }
 
         return next.handle(request)
@@ -57,8 +64,7 @@ export class KinveyInterceptor implements HttpInterceptor {
                     if (res.body._kmd.hasOwnProperty('roles')) {
                         localStorage.setItem('isAdmin', 'true')
                     }
-                }
-                else if (res instanceof HttpResponse && request.url.endsWith('_logout')) {
+                } else if (res instanceof HttpResponse && request.url.endsWith('_logout')) {
                     localStorage.clear()
                 }
             }))

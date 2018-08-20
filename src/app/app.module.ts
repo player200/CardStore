@@ -10,6 +10,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { HomeComponent } from './components/home/home.component';
 import { AuthModule } from './components/auth/auth.module';
 import { KinveyInterceptor } from './core/interceptors/kinvey.interceptors';
+import { CreateCategoryComponent } from './components/category/create-category/create-category.component';
+import { CategoryModule } from './components/category/category.module';
+import { CreateCardComponent } from './components/card/create-card/create-card.component';
+import { CardModule } from './components/card/card.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { KinveyInterceptor } from './core/interceptors/kinvey.interceptors';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AuthModule
+    AuthModule,
+    CategoryModule,
+    CardModule
   ],
   providers: [
     {
