@@ -13,8 +13,8 @@ import { tap } from 'rxjs/operators'
 import { Router } from '@angular/router';
 
 
-const appKey = "" // APP KEY HERE;
-const appSecret = "" // APP SECRET HERE;
+const appKey = "kid_SkkFOgvUX" // APP KEY HERE;
+const appSecret = "547f24fa79284e158a15ac8769796874" // APP SECRET HERE;
 
 @Injectable()
 export class KinveyInterceptor implements HttpInterceptor {

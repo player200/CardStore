@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms';
-import { AuthService } from './auth.service';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../core/services/auth.service';
+import { Kinvey } from '../../core/services/remote';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { CommonModule } from '@angular/common';
         CommonModule
     ],
     providers: [
-        AuthService
+        AuthService,
+        Kinvey
     ]
 })
 export class AuthModule { }
