@@ -1,0 +1,16 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Category name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <td>{{category.name}}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="delete(category._id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -6,10 +6,18 @@ import { Kinvey } from '../../core/services/remote';
 import { CardRoutingModule } from './card-routing.module';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { CardService } from '../../core/services/card.service';
+import { ListCardComponent } from './list-card/list-card.component';
+import { MyCardComponent } from './my-card/my-card.component';
+import { DetailCardComponent } from './detail-card/detail-card.component';
+import { EditCardComponent } from './edit-card/edit-card.component';
 
 @NgModule({
     declarations: [
-        CreateCardComponent
+        CreateCardComponent,
+        ListCardComponent,
+        MyCardComponent,
+        DetailCardComponent,
+        EditCardComponent
     ],
     imports: [
         FormsModule,

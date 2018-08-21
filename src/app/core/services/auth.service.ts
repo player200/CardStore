@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { LoginModel } from "../models/login.model";
-import { RegisterModel } from "../models/register.model";
 import { Kinvey } from "./remote";
+import { RegisterModel } from "../models/auth/register.model";
+import { LoginModel } from "../models/auth/login.model";
 
 @Injectable()
 export class AuthService {
@@ -17,6 +17,10 @@ export class AuthService {
 
     logout() {
         return this.requester.post('user', '_logout', {})
+    }
+
+    getCurrentUserId() {
+        return localStorage.getItem('userId')
     }
 
     checkedIfLogged() {

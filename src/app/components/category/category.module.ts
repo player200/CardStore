@@ -6,10 +6,12 @@ import { Kinvey } from '../../core/services/remote';
 import { CategoryService } from '../../core/services/category.service';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { CategoryRoutingModule } from './category-routing.module';
+import { ListCategoryComponent } from './list-category/list-category.component';
 
 @NgModule({
     declarations: [
-        CreateCategoryComponent
+        CreateCategoryComponent,
+        ListCategoryComponent
     ],
     imports: [
         FormsModule,

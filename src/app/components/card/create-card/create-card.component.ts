@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CardModel } from '../../../core/models/card.model';
 import { CardService } from '../../../core/services/card.service';
 import { CategoryService } from '../../../core/services/category.service';
-import { GetCategoryModel } from '../../../core/models/get-category.model';
+import { CardModel } from '../../../core/models/card/card.model';
+import { GetCategoryModel } from '../../../core/models/category/get-category.model';
 
 @Component({
   selector: 'app-create-card',

@@ -1,0 +1,23 @@
+<div *ngIf="card" class="container">
+    <div class="row space-top">
+        <div class="col-md-12">
+            <h1>Card Details</h1>
+        </div>
+    </div>
+    <div class="row space-top">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <blockquote class="card-blockquote">
+                        <img src="{{card.imageUrl}}" />
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p>Name: {{card.name}}</p>
+            <p>Description: {{card.description}}</p>
+            <p>Price: {{card.price}}</p>
+        </div>
+    </div>
+  </div>

@@ -46,7 +46,7 @@ export class KinveyInterceptor implements HttpInterceptor {
                 }
             })
             this.router.navigate(['/home'])
-        } else if (request.url.includes('appdata')){
+        } else if (request.url.includes('appdata')) {
             request = request.clone({
                 setHeaders: {
                     'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
@@ -59,6 +59,7 @@ export class KinveyInterceptor implements HttpInterceptor {
         return next.handle(request)
             .pipe(tap((res: any) => {
                 if (res instanceof HttpResponse && request.url.endsWith('login')) {
+                    localStorage.setItem('userId', res.body['_id'])
                     localStorage.setItem('authtoken', res.body['_kmd']['authtoken'])
                     localStorage.setItem('username', res.body['username'])
                     if (res.body._kmd.hasOwnProperty('roles')) {
