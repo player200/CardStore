@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+
 import { LoginModel } from '../../../core/models/auth/login.model';
 
 @Component({
@@ -10,15 +11,15 @@ import { LoginModel } from '../../../core/models/auth/login.model';
 })
 export class LoginComponent implements OnInit {
   model: LoginModel
+
   constructor(private authService: AuthService) {
-    this.model = new LoginModel('', '');
+    this.model = new LoginModel('', '')
   }
+
+  ngOnInit() { }
 
   login() {
     this.authService.login(this.model)
       .subscribe()
-  }
-
-  ngOnInit() {
   }
 }

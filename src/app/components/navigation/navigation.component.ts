@@ -11,7 +11,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   logout() {
     this.authService.logout()
       .subscribe()

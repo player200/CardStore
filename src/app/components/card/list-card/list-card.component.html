@@ -14,9 +14,9 @@
             <p>{{card.name}}</p>
             <p>${{card.price}}</p>
             <div class="pull-right">
-              <a routerLink="../details/{{card.id}}" class="btn btn-info">Details</a>
-              <a routerLink="../edit/{{card.id}}" *ngIf="authService.checkedIfAdmin()" class="btn btn-success">Edit Item</a>
-              <a *ngIf="authService.checkedIfAdmin()" (click)="delete(card.id)" class="btn btn-danger">Delete Item</a>
+              <a routerLink="../details/{{card._id}}" class="btn btn-info">Details</a>
+              <a routerLink="../edit/{{card._id}}" *ngIf="authService.checkedIfAdmin()" class="btn btn-success">Edit Item</a>
+              <a routerLink="../delete/{{card._id}}" *ngIf="authService.checkedIfAdmin()" class="btn btn-danger">Delete Item</a>
             </div>
           </blockquote>
         </div>

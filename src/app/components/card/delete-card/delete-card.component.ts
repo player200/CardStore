@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { CardModel } from '../../../core/models/card/card.model';
 
 @Component({
-  selector: 'app-edit-card',
-  templateUrl: './edit-card.component.html',
-  styleUrls: ['./edit-card.component.css']
+  selector: 'app-delete-card',
+  templateUrl: './delete-card.component.html',
+  styleUrls: ['./delete-card.component.css']
 })
-export class EditCardComponent implements OnInit {
+export class DeleteCardComponent implements OnInit {
   model: CardModel
   id: string
 
@@ -24,9 +24,9 @@ export class EditCardComponent implements OnInit {
       .subscribe(data => this.model = data)
   }
 
-  edit() {
-    this.cardService
-      .edit(this.id, this.model)
+  delete(id: string) {
+    return this.cardService
+      .delete(id)
       .subscribe()
   }
 }

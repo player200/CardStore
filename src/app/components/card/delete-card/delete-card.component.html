@@ -1,0 +1,23 @@
+<div *ngIf="model" class="container">
+  {{model | json}}
+  <h1>Delete card</h1>
+  <form (ngSubmit)="delete(model._id)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" readonly name="name" [(ngModel)]="model.name" #name="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" class="form-control" id="price" readonly name="price" [(ngModel)]="model.price" #price="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" id="description" readonly name="description" [(ngModel)]="model.description" #description="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">Image Url</label>
+      <input type="text" class="form-control" id="imageUrl" readonly name="imageUrl" [(ngModel)]="model.imageUrl" #imageUrl="ngModel">
+    </div>
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
+
 import { RegisterModel } from '../../../core/models/auth/register.model';
 
 @Component({
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
   model: RegisterModel;
 
   constructor(private authService: AuthService) {
-    this.model = new RegisterModel('', '', '');
+    this.model = new RegisterModel('', '', '')
   }
 
   ngOnInit() {
@@ -20,6 +21,6 @@ export class RegisterComponent implements OnInit {
   register() {
     this.authService
       .register(this.model)
-      .subscribe();
+      .subscribe()
   }
 }

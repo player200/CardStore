@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../core/services/category.service';
+
 import { CategoryModel } from '../../../core/models/category/category.model';
 
 @Component({
@@ -9,16 +10,16 @@ import { CategoryModel } from '../../../core/models/category/category.model';
 })
 export class CreateCategoryComponent implements OnInit {
   model: CategoryModel
+
   constructor(private categoryService: CategoryService) {
-    this.model = new CategoryModel('');
+    this.model = new CategoryModel('')
   }
+
+  ngOnInit() {}
 
   create() {
     this.categoryService
       .create(this.model)
       .subscribe()
-  }
-
-  ngOnInit() {
   }
 }

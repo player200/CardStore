@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
+import { DeleteCategoryComponent } from './delete-category/delete-category.component';
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 const categoryRoutes: Routes = [
     { path: 'all', component: ListCategoryComponent },
     { path: 'create', component: CreateCategoryComponent },
-    //{ path: 'details/:id', component: FurnituresDetailsComponent },
-    //{ path: 'mine', component: MyFurnitureComponent },
-    //{ path: 'edit/:id', component: EditFurnitureComponent }
+    { path: 'delete/:id', component: DeleteCategoryComponent }
 ]
 
 @NgModule({

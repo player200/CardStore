@@ -1,21 +1,39 @@
 import { Injectable } from "@angular/core";
 import { Kinvey } from "./remote";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+
 import { CategoryModel } from "../models/category/category.model";
+import { GetCategoryModel } from "../models/category/get-category.model";
+
+const module: string = 'appdata'
+const endpoint: string = 'Category'
 
 @Injectable()
 export class CategoryService {
-    constructor(private requester: Kinvey) { }
+    constructor(private requester: Kinvey,
+        private http: HttpClient) { }
 
-    create(body: CategoryModel) {
-        return this.requester.post('appdata', 'Category', body)
+    getAll(): Observable<GetCategoryModel[]> {
+        let url = this.requester.getUrl(module, endpoint)
+        return this.http.get<GetCategoryModel[]>(url)
     }
 
-    getAll() {
-        return this.requester.get('appdata', 'Category')
+    getCategoryById(id: string): Observable<GetCategoryModel> {
+        let url = this.requester.getUrl(module, endpoint + '/' + id)
+        return this.http.get<GetCategoryModel>(url)
     }
 
-    delete(id: string) {
-        let endpoint = 'Category/' + id
-        return this.requester.delete('appdata', endpoint)
+    create(body: CategoryModel): Observable<Object> {
+        let url = this.requester.getUrl(module, endpoint)
+        let bodyToStr = JSON.stringify(body)
+
+        return this.http.post(url, bodyToStr)
+    }
+
+    delete(id: string): Observable<Object> {
+        let url = this.requester.getUrl(module, endpoint + '/' + id)
+
+        return this.http.delete(url)
     }
 }
