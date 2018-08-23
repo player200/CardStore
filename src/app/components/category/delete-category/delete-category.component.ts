@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../../../core/services/category.service';
+import { ToastrService } from 'ngx-toastr';
 
 import { GetCategoryModel } from '../../../core/models/category/get-category.model';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-delete-category',
@@ -14,7 +15,9 @@ export class DeleteCategoryComponent implements OnInit {
   id: string
 
   constructor(private categoryService: CategoryService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService) {
     this.id = this.route.snapshot.params['id']
   }
 
@@ -27,6 +30,9 @@ export class DeleteCategoryComponent implements OnInit {
   delete(id: string) {
     return this.categoryService
       .delete(id)
-      .subscribe()
+      .subscribe(()=>{
+        this.toastr.success('Deleted successful', 'Success!')
+        this.router.navigate(['/all'])
+      })
   }
 }

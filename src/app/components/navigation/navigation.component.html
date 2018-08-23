@@ -1,10 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Forms</a>
+  <a class="navbar-brand" href="#">Card Store</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -12,20 +11,20 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li *ngIf=authService.checkedIfAdmin() class="nav-item">
-        <a class="nav-link" routerLink="/category/create">Create Category</a>
+      <li *ngIf=authService.checkedIfAdmin() (click)="expandCategory()" [class]="dropdownLi">
+        <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+        <div [class]="dropdownMenu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" routerLink="/category/create">Create Category</a>
+          <a class="dropdown-item" routerLink="/category/all">List Category</a>
+        </div>
       </li>
-      <li *ngIf=authService.checkedIfAdmin() class="nav-item">
-        <a class="nav-link" routerLink="/category/all">List Category</a>
-      </li>
-      <li *ngIf=authService.checkedIfLogged() class="nav-item">
-        <a class="nav-link" routerLink="/card/create">Create Card</a>
-      </li>
-      <li *ngIf=authService.checkedIfLogged() class="nav-item">
-        <a class="nav-link" routerLink="/card/all">All Cards</a>
-      </li>
-      <li *ngIf=authService.checkedIfLogged() class="nav-item">
-        <a class="nav-link" routerLink="/card/mine">My Cards</a>
+      <li *ngIf=authService.checkedIfLogged() (click)="expandCard()" [class]="dropdownLiSecond">
+        <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Card</a>
+        <div [class]="dropdownMenuSecond" aria-labelledby="dropdown01">
+          <a class="dropdown-item" routerLink="/card/create">Create Card</a>
+          <a class="dropdown-item" routerLink="/card/all">All Cards</a>
+          <a class="dropdown-item" routerLink="/card/mine">My Cards</a>
+        </div>
       </li>
       <li *ngIf=!authService.checkedIfLogged() class="nav-item">
         <a class="nav-link" routerLink="/login">Login</a>
@@ -33,7 +32,6 @@
       <li *ngIf=!authService.checkedIfLogged() class="nav-item">
         <a class="nav-link" routerLink="/register">Register</a>
       </li>
-
       <li *ngIf=authService.checkedIfLogged() class="nav-item">
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>

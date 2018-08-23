@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CardRoutingModule } from './card-routing.module';
 import { DeleteCardComponent } from './delete-card/delete-card.component';
+import { SearchCardComponent } from './search-card/search-card.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { DeleteCardComponent } from './delete-card/delete-card.component';
         MyCardComponent,
         DetailCardComponent,
         EditCardComponent,
-        DeleteCardComponent
+        DeleteCardComponent,
+        SearchCardComponent
     ],
     imports: [
         FormsModule,

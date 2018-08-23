@@ -5,6 +5,7 @@ import { DetailCardComponent } from './detail-card/detail-card.component';
 import { EditCardComponent } from './edit-card/edit-card.component';
 import { AuthenticationGuard } from '../../core/guards/authentication.guard';
 import { DeleteCardComponent } from './delete-card/delete-card.component';
+import { SearchCardComponent } from './search-card/search-card.component';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,7 +16,8 @@ const cardRoutes: Routes = [
     { path: 'details/:id', component: DetailCardComponent },
     { path: 'mine', canActivate: [AuthenticationGuard], component: MyCardComponent },
     { path: 'edit/:id', canActivate: [AuthenticationGuard], component: EditCardComponent },
-    { path: 'delete/:id', canActivate: [AuthenticationGuard], component: DeleteCardComponent }
+    { path: 'delete/:id', canActivate: [AuthenticationGuard], component: DeleteCardComponent },
+    { path: 'search/:id', component: SearchCardComponent }
 ]
 
 @NgModule({

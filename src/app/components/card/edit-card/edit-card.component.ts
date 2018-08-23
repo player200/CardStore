@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardService } from '../../../core/services/card.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { CardModel } from '../../../core/models/card/card.model';
 
@@ -14,7 +15,9 @@ export class EditCardComponent implements OnInit {
   id: string
 
   constructor(private cardService: CardService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService) {
     this.id = this.route.snapshot.params['id']
   }
 
@@ -27,6 +30,9 @@ export class EditCardComponent implements OnInit {
   edit() {
     this.cardService
       .edit(this.id, this.model)
-      .subscribe()
+      .subscribe(() => {
+        this.toastr.success('Edited successful', 'Success!')
+        this.router.navigate(['/card/all'])
+      })
   }
 }

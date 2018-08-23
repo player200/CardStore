@@ -1,5 +1,4 @@
 <div *ngIf="model" class="container">
-  {{model | json}}
   <h1>Delete card</h1>
   <form (ngSubmit)="delete(model._id)">
     <div class="form-group">

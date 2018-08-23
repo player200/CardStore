@@ -1,5 +1,4 @@
 <div class="container">
-  {{model | json}}
   <h1>Create card</h1>
   <form #createCardForm="ngForm" (ngSubmit)="create()">
     <div class="form-group">
@@ -9,7 +8,7 @@
     <div class="form-group">
       <label for="categoryId">Category</label>
       <select class="form-control" id="categoryId" name="categoryId" [(ngModel)]="model.categoryId">
-        <option *ngFor="let category of categories" value="{{category._id}}">{{category.name}}</option>
+        <option *ngFor="let category of categories | async" value="{{category._id}}">{{category.name}}</option>
       </select>
     </div>
     <div class="form-group">

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -14,12 +15,15 @@ import { CreateCategoryComponent } from './components/category/create-category/c
 import { CategoryModule } from './components/category/category.module';
 import { CreateCardComponent } from './components/card/create-card/create-card.component';
 import { CardModule } from './components/card/card.module';
+import { FooterComponent } from './components/footer/footer.component';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,12 +33,18 @@ import { CardModule } from './components/card/card.module';
     BrowserAnimationsModule,
     AuthModule,
     CategoryModule,
-    CardModule
+    CardModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: KinveyInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     }
   ],

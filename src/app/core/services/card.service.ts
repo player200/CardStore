@@ -35,6 +35,11 @@ export class CardService {
         return this.http.get<DetailCardModel>(url)
     }
 
+    getCardsByCategoryId(id: string): Observable<ListingCardModel[]> {
+        let url = this.requester.getUrl(module, endpoint + `?query={"categoryId":"${id}"}`)
+        return this.http.get<ListingCardModel[]>(url)
+    }
+
     create(body: CardModel): Observable<Object> {
         let url = this.requester.getUrl(module, endpoint)
         let bodyToStr = JSON.stringify(body)

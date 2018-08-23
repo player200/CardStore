@@ -1,3 +1,20 @@
-<p>
-  home works!
-</p>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="text-center">Wellcome in Card Store.</h1>
+    <p *ngIf="!authService.checkedIfLogged()">If you want to check our cards you have to
+      <a routerLink="/register">register</a>/
+      <a routerLink="/login">login</a> first.</p>
+  </div>
+
+  <div *ngIf="authService.checkedIfLogged()" class="container">
+    <h1>Choose category</h1>
+    <form #findCardForm="ngForm" (ngSubmit)="find()">
+      <div class="form-group">
+        <select class="form-control" id="categoryId" name="categoryId" [(ngModel)]="id">
+          <option *ngFor="let category of categories | async" value="{{category._id}}">{{category.name}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</div>

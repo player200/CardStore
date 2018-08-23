@@ -11,14 +11,12 @@ import { ListingCardModel } from '../../../core/models/card/listing-card.model';
   styleUrls: ['./list-card.component.css']
 })
 export class ListCardComponent implements OnInit {
-  cards: ListingCardModel[]
+  cards: Observable<ListingCardModel[]>
 
   constructor(private cardService: CardService,
     private authService: AuthService) { }
 
   ngOnInit() {
-    this.cardService
-      .getAll()
-      .subscribe(data => this.cards = data)
+    this.cards = this.cardService.getAll()
   }
 }
