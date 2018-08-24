@@ -3,7 +3,6 @@ import { ListCardComponent } from './list-card/list-card.component';
 import { MyCardComponent } from './my-card/my-card.component';
 import { DetailCardComponent } from './detail-card/detail-card.component';
 import { EditCardComponent } from './edit-card/edit-card.component';
-import { AuthenticationGuard } from '../../core/guards/authentication.guard';
 import { DeleteCardComponent } from './delete-card/delete-card.component';
 import { SearchCardComponent } from './search-card/search-card.component';
 
@@ -12,11 +11,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const cardRoutes: Routes = [
     { path: 'all', component: ListCardComponent },
-    { path: 'create', canActivate: [AuthenticationGuard], component: CreateCardComponent },
+    { path: 'create', component: CreateCardComponent },
     { path: 'details/:id', component: DetailCardComponent },
-    { path: 'mine', canActivate: [AuthenticationGuard], component: MyCardComponent },
-    { path: 'edit/:id', canActivate: [AuthenticationGuard], component: EditCardComponent },
-    { path: 'delete/:id', canActivate: [AuthenticationGuard], component: DeleteCardComponent },
+    { path: 'mine', component: MyCardComponent },
+    { path: 'edit/:id', component: EditCardComponent },
+    { path: 'delete/:id', component: DeleteCardComponent },
     { path: 'search/:id', component: SearchCardComponent }
 ]
 
