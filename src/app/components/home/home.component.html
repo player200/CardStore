@@ -10,9 +10,16 @@
     <h1>Choose category</h1>
     <form #findCardForm="ngForm" (ngSubmit)="find()">
       <div class="form-group">
-        <select class="form-control" id="categoryId" name="categoryId" [(ngModel)]="id">
+        <select class="form-control" id="categoryId" 
+        required
+        name="categoryId" 
+        [(ngModel)]="id"
+        #categoryId="ngModel">
           <option *ngFor="let category of categories | async" value="{{category._id}}">{{category.name}}</option>
         </select>
+        <div [hidden]="categoryId.valid || (categoryId.pristine && categoryId.untouched)" class="alert alert-danger">
+          Chose category.
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">Search</button>
     </form>

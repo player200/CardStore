@@ -21,7 +21,7 @@ export class CreateCardComponent implements OnInit {
     private categoryService: CategoryService,
     private router: Router,
     private toastr: ToastrService) {
-    this.model = new CardModel('', '', 0, '', '')
+    this.model = new CardModel('', '', 0.01, '', '')
   }
 
   ngOnInit() {

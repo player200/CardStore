@@ -1,26 +1,26 @@
 <div class="container">
-    <div class="row space-top">
-      <div class="col-md-12">
-        <h1>My cards</h1>
-        <p>All cards that you have at the moment.</p>
-      </div>
+  <div class="row space-top">
+    <div class="col-md-12">
+      <h1>My cards</h1>
+      <p>All cards that you have at the moment.</p>
     </div>
-    <div class="row space-top">
-      <div *ngFor="let card of cards | async" class="col-md-4">
-        <div class="card text-white bg-primary">
-          <div class="card-body">
-            <blockquote class="card-blockquote">
-              <img src="{{card.imageUrl}}" />
-              <p>{{card.name}}</p>
-              <p>${{card.price}}</p>
-              <div class="pull-right">
-                <a routerLink="../details/{{card._id}}" class="btn btn-info">Details</a>
-                <a routerLink="../edit/{{card._id}}" class="btn btn-success">Edit Item</a>
-                <a routerLink="../delete/{{card._id}}" class="btn btn-danger">Delete Item</a>
-              </div>
-            </blockquote>
-          </div>
+  </div>
+  <div class="row space-top">
+    <div *ngFor="let card of cards | async" class="col-md-4">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <blockquote class="card-blockquote">
+            <img src="{{card.imageUrl}}" />
+            <p>{{card.name}}</p>
+            <p>${{card.price}}</p>
+            <div class="pull-right">
+              <a routerLink="../details/{{card._id}}" class="btn btn-info">Details</a>
+              <a routerLink="../edit/{{card._id}}" class="btn btn-success">Edit Item</a>
+              <a routerLink="../delete/{{card._id}}" class="btn btn-danger">Delete Item</a>
+            </div>
+          </blockquote>
         </div>
       </div>
     </div>
   </div>
+</div>

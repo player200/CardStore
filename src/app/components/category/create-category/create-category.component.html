@@ -3,7 +3,16 @@
   <form #createCategoryForm="ngForm" (ngSubmit)="create()">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" required name="name" [(ngModel)]="model.name" #name="ngModel">
+      <input type="text" class="form-control" id="name"
+      required
+      minlength="3"
+      maxlength="50"
+      name="name"
+      [(ngModel)]="model.name" 
+      #name="ngModel">
+      <div [hidden]="name.valid || (name.pristine && name.untouched)" class="alert alert-danger">
+        Category name should be between 3 to 50 characters long.
+      </div>
     </div>
     <button type="submit" class="btn btn-success" [disabled]="createCategoryForm.form.invalid">Create</button>
   </form>
